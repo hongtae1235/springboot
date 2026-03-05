@@ -1,4 +1,4 @@
-package me.sblee.springdeveloper;
+package me.scpark.springdeveloper;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
