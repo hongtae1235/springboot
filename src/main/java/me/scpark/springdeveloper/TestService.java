@@ -8,9 +8,13 @@ import java.util.List;
 public class TestService {
 
     @Autowired
-    TestRepository memberRepository;
+    TestRepository testRepository;
 
     public List<Member> getAllMembers() {
-        return memberRepository.findAll();
+        return testRepository.findAll();
+    }
+
+    public Member addMember(Member member) {
+        return testRepository.save(member);
     }
 }
