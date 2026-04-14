@@ -1,7 +1,9 @@
 package me.scpark.springdeveloper.dto;
 
+import lombok.Getter;
 import me.scpark.springdeveloper.dao.Article;
 
+@Getter
 public class ArticleResponse {
     private final String title;
     private final String content;

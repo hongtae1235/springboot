@@ -1,6 +1,7 @@
 package me.scpark.springdeveloper.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import me.scpark.springdeveloper.dao.Article;
 import me.scpark.springdeveloper.dto.AddArticleRequest;
 import me.scpark.springdeveloper.repository.BlogRepository;
@@ -20,4 +21,11 @@ import java.util.List;
         public List<Article> findAll(){
             return blogRepository.findAll();
         }
+
+
+    @SneakyThrows
+    public Article findById(Long id){
+         return blogRepository.findById(id)
+                 .orElseThrow(()-> new IllegalAccessException("not found:" +id));
     }
+}
