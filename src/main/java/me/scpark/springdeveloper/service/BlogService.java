@@ -5,7 +5,9 @@ import lombok.SneakyThrows;
 import me.scpark.springdeveloper.dao.Article;
 import me.scpark.springdeveloper.dto.AddArticleRequest;
 import me.scpark.springdeveloper.repository.BlogRepository;
+import org.hibernate.sql.Update;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,8 +26,20 @@ import java.util.List;
 
 
     @SneakyThrows
-    public Article findById(Long id){
-         return blogRepository.findById(id)
-                 .orElseThrow(()-> new IllegalAccessException("not found:" +id));
+    public Article findById(long id) {
+        return blogRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("not found"+id));
+    }
+
+    public void delete(long id) {
+            blogRepository.deleteById(id);
+    }
+
+    @Transactional
+    public Article update(long id, UpdateArticleRequest request) {
+            Article article = blogRepository.findById(id)
+                    .orElseThrow(()->new IllegalArgumentException("not found"+id));
+            article.update(request.getTitle(), request.getContent());
+            return article;
     }
 }
