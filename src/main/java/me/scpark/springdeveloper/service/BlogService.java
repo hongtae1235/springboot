@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import me.scpark.springdeveloper.dao.Article;
 import me.scpark.springdeveloper.dto.AddArticleRequest;
+import me.scpark.springdeveloper.dto.UpdateArticleRequest;
 import me.scpark.springdeveloper.repository.BlogRepository;
-import org.hibernate.sql.Update;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,9 +37,9 @@ import java.util.List;
 
     @Transactional
     public Article update(long id, UpdateArticleRequest request) {
-            Article article = blogRepository.findById(id)
-                    .orElseThrow(()->new IllegalArgumentException("not found"+id));
-            article.update(request.getTitle(), request.getContent());
-            return article;
+        Article articles = blogRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found" + id));
+        articles.update(request.getTitle(), request.getContent());
+        return articles;
     }
 }
