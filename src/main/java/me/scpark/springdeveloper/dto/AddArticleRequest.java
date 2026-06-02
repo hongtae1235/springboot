@@ -11,9 +11,9 @@ import me.scpark.springdeveloper.dao.Article;
 public class AddArticleRequest {
     private String title;
     private String content;
-    public Article toEntity() {
-      //  return new Article(title, content);
+
+    public Article toEntity(){
         return Article.builder().title(title).content(content).build();
-    }
-    // new AddArticleRequest("제목", "내용")
+    };
+
 }
