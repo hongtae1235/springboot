@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+  h2:
+    console:
+      enabled: true # 웹 콘솔 활성화
+      path: /h2-console
+  jpa:
+    show-sql: true # 실행되는 SQL 콘솔에 출력
+    properties:
+      hibernate:
+        format_sql: true # SQL을 줄바꿈해서 보기 좋게 출력
+
+    # 테이블 생성 후에 data.sql 생성
+    defer-datasource-initialization: true
+jwt:
+  issuer: scpark@yju.ac.kr
+  secret-key: study-springboot-secret-key-for-jwt-signing
